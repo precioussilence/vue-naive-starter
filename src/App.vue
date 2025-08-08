@@ -9,7 +9,11 @@ const layout = computed(() => {
 </script>
 
 <template>
-  <component :is="layout">
-    <router-view />
-  </component>
+  <n-config-provider>
+    <n-message-provider>
+      <component :is="layout">
+        <router-view />
+      </component>
+    </n-message-provider>
+  </n-config-provider>
 </template>
