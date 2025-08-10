@@ -4,4 +4,5 @@ export const icons = {
   userManagement: () => h('i', { class: 'i-carbon-user' }),
   roleManagement: () => h('i', { class: 'i-carbon-user-role' }),
   menuManagement: () => h('i', { class: 'i-carbon-menu' }),
+  logout: () => h('i', { class: 'i-mdi:logout' }),
 }

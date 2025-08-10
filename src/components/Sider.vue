@@ -42,7 +42,7 @@ function renderLabel(to: string, name: string) {
 
 <template>
   <section class="h-full flex flex-col justify-start">
-    <div class="flex items-center justify-center gap-4 p-4">
+    <div class="flex items-center justify-center gap-4 p-3">
       <n-image width="30" src="https://www.naiveui.com/assets/naivelogo-BdDVTUmz.svg" class="rounded-4" />
       <n-text type="default" class="text-lg font-medium">
         vue-naive-starter
@@ -51,17 +51,14 @@ function renderLabel(to: string, name: string) {
     <div class="flex-1 overflow-hidden p-2">
       <n-menu
         v-model:value="activeKey"
-        bordered
         :collapsed="collapsed"
         :collapsed-width="64"
         :collapsed-icon-size="22"
+        :root-indent="12"
+        :indent="8"
         :options="menuOptions"
         class="h-full w-full"
       />
     </div>
   </section>
 </template>
-
-<style scoped>
-
-</style>

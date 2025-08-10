@@ -23,6 +23,7 @@ export default defineConfig({
           '@vueuse/core': [
             'useMouse',
             'useLocalStorage',
+            'useFullscreen',
           ],
         },
         {

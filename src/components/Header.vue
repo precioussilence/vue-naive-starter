@@ -1,9 +1,24 @@
 <script setup lang="ts">
 import type { Breadcrumb } from '@/types/common'
+import { useFullscreen } from '@vueuse/core'
+import { icons } from '@/utils/icon'
 
 const breadcrumbs = ref<Breadcrumb[]>([])
 const route = useRoute()
 const router = useRouter()
+const { isFullscreen, toggle } = useFullscreen()
+const options = [
+  {
+    label: '个人中心',
+    key: 'profile',
+    icon: icons.userManagement,
+  },
+  {
+    label: '退出登录',
+    key: 'logout',
+    icon: icons.logout,
+  },
+]
 
 function generateBreadcrumbs() {
   breadcrumbs.value = route.matched
@@ -32,35 +47,33 @@ function handleBreadcrumbClick(fullPath: string) {
 
 <template>
   <section class="h-full flex">
-    <div class="flex items-center gap-4 py-4">
-      <n-button type="default" :bordered="false">
-        <i class="i-mdi-menu-open text-2xl" />
-      </n-button>
-    </div>
-    <div class="flex flex-1 items-center justify-start py-4">
-      <n-breadcrumb class="align-middle">
+    <div class="flex flex-1 items-center justify-start p-3">
+      <n-breadcrumb>
         <n-breadcrumb-item
           v-for="(crumb, index) in breadcrumbs"
           :key="crumb.fullPath"
           :class="{ 'cursor-pointer': index !== breadcrumbs.length - 1 } "
           @click="handleBreadcrumbClick(crumb.fullPath)"
         >
-          <div class="flex items-center gap-1">
-            <i class="mx-1 align-middle text-lg" :class="crumb.icon" />
-            <n-text type="default" class="text-md font-medium">
-              {{ crumb.title }}
-            </n-text>
-          </div>
+          <n-button>
+            <i :class="crumb.icon" /><span class="ml-2">{{ crumb.title }}</span>
+          </n-button>
         </n-breadcrumb-item>
       </n-breadcrumb>
     </div>
-    <div class="flex items-center justify-end gap-4 p-4">
-      <n-button type="primary" :bordered="false">
-        <i class="i-mdi-account" />
+    <div class="flex items-center justify-end gap-4 p-3">
+      <n-button @click="toggle">
+        <i :class="isFullscreen ? 'i-mdi:fullscreen-exit' : 'i-mdi:fullscreen'" class="text-7" />
       </n-button>
-      <n-button type="primary" :bordered="false">
-        <i class="i-mdi-cog" />
-      </n-button>
+      <n-dropdown :options="options" placement="bottom-end">
+        <n-button>
+          <n-avatar
+            size="small"
+            src="https://www.naiveui.com/assets/naivelogo-BdDVTUmz.svg"
+            class="rounded-full"
+          />
+        </n-button>
+      </n-dropdown>
     </div>
   </section>
 </template>
