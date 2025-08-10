@@ -32,7 +32,7 @@ function handleBreadcrumbClick(fullPath: string) {
 
 <template>
   <section class="h-full flex">
-    <div class="flex items-center gap-4 p-4">
+    <div class="flex items-center gap-4 py-4">
       <n-button type="default" :bordered="false">
         <i class="i-mdi-menu-open text-2xl" />
       </n-button>
@@ -45,10 +45,12 @@ function handleBreadcrumbClick(fullPath: string) {
           :class="{ 'cursor-pointer': index !== breadcrumbs.length - 1 } "
           @click="handleBreadcrumbClick(crumb.fullPath)"
         >
-          <i class="mx-1 align-middle text-lg" :class="crumb.icon" />
-          <n-text type="default" class="text-md font-medium">
-            {{ crumb.title }}
-          </n-text>
+          <div class="flex items-center gap-1">
+            <i class="mx-1 align-middle text-lg" :class="crumb.icon" />
+            <n-text type="default" class="text-md font-medium">
+              {{ crumb.title }}
+            </n-text>
+          </div>
         </n-breadcrumb-item>
       </n-breadcrumb>
     </div>

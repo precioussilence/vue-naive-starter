@@ -9,19 +9,17 @@
         <Sider />
       </n-layout-sider>
       <n-layout>
-        <n-layout-header bordered>
-          <Header />
-        </n-layout-header>
-        <n-layout-content class="flex-1 overflow-auto">
-          <slot />
-        </n-layout-content>
-        <n-layout-footer
-          bordered
-          position="absolute"
-          style="height: 64px; padding: 24px"
-        >
-          <Footer />
-        </n-layout-footer>
+        <n-flex vertical class="h-full">
+          <n-layout-header bordered class="shrink-0" style="height: 64px; padding: 0 24px">
+            <Header />
+          </n-layout-header>
+          <n-layout-content class="flex-1" content-style="padding: 0 12px; overflow: auto">
+            <slot />
+          </n-layout-content>
+          <n-layout-footer bordered class="shrink-0" style="height: 64px; padding: 0 24px">
+            <Footer />
+          </n-layout-footer>
+        </n-flex>
       </n-layout>
     </n-layout>
   </article>
