@@ -1,7 +1,8 @@
 import App from './App.vue'
 import router from './router'
 
-import '@unocss/reset/normalize.css'
+import '@unocss/reset/sanitize/sanitize.css'
+import '@unocss/reset/sanitize/assets.css'
 import 'virtual:uno.css'
 import 'vfonts/Lato.css'
 import 'vfonts/FiraCode.css'
